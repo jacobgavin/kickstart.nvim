@@ -41,8 +41,17 @@ autocmd('LspAttach', {
         vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = e.buf,
+            callback = function()
+                vim.lsp.buf.format { async = false, id = e.data.client_id }
+            end,
+        })
     end
 })
+
+
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0

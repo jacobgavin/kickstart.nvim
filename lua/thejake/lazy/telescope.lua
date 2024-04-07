@@ -7,7 +7,7 @@ return {
 		vim.keymap.set('n', '<leader>sg', builtin.live_grep, {})
 		vim.keymap.set('n', '<leader>sb', builtin.buffers, {})
 		vim.keymap.set('n', '<leader>sh', builtin.help_tags, {})
-		vim.keymap.set('n', '<leader>sp', builtin.git_files, {})
+		vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 		vim.keymap.set('n', '<leader>gI', builtin.lsp_implementations, {})
 	end,
 }
