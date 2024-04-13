@@ -21,7 +21,7 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
     group = TheJakeGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
@@ -44,8 +44,8 @@ autocmd('LspAttach', {
 
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = e.buf,
-            callback = function()
-                vim.lsp.buf.format { async = false, id = e.data.client_id }
+            callback = function(args)
+                require("conform").format({ bufnr = args.buf })
             end,
         })
     end
